@@ -19,12 +19,12 @@ window.onload = function() {
 
         game.load.image('bullet', 'assets/bullet.png');
         game.load.image('rock', 'assets/rocket.png');
-        game.load.image('invader', 'assets/phaser.png');
+        //game.load.image('invader', 'assets/phaser.png');
     }
 
     var sprite;
     var bullets;
-    var aliens;
+    //var aliens;
 
     var fireRate = 100;
     var nextFire = 0;
@@ -51,13 +51,13 @@ window.onload = function() {
         sprite.body.allowRotation = false;
         
         //  The baddies!
-        aliens = game.add.group();
+        /*aliens = game.add.group();
         aliens.enableBody = true;
         aliens.physicsBodyType = Phaser.Physics.ARCADE;
 
-        createAliens();
+        createAliens();*/
     }
-    function createAliens () {
+    /*function createAliens () {
 
         var alien = aliens.create(300, 200, 'invader');
         alien.anchor.set(0.5);
@@ -74,7 +74,7 @@ window.onload = function() {
             stateText.visible = true;
         }
 
-    }
+    }*/
     function update() {
 
         sprite.rotation = game.physics.arcade.angleToPointer(sprite);
@@ -101,10 +101,10 @@ function fire() {
 
 }
 
-/*function render() {
+function render() {
 
     game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.total, 32, 32);
     game.debug.spriteInfo(sprite, 32, 450);
 
-}*/
+}
 }
