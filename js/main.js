@@ -15,30 +15,30 @@ window.onload = function() {
     
     var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
 
-function preload() {
+    function preload() {
 
-    game.load.image('logo', 'assets/phaser.png');
-   // game.load.image('bullet', 'assets/phaser.png');
+        game.load.image('logo', 'assets/phaser.png');
+    // game.load.image('bullet', 'assets/phaser.png');
     
-}
+    }
 
-var sprite;
-var bullets;
+    var sprite;
+    var bullets;
 
-var fireRate = 100;
-var nextFire = 0;
+    var fireRate = 100;
+    var nextFire = 0;
 
-function create() {
+    function create() {
 
-    game.physics.startSystem(Phaser.Physics.ARCADE);
+        game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    game.stage.backgroundColor = '#313131';
+        game.stage.backgroundColor = '#313131';
 
-    bullets = game.add.group();
-    bullets.enableBody = true;
-    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+        bullets = game.add.group();
+        bullets.enableBody = true;
+        bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
-    bullets.createMultiple(50, 'logo');
+        bullets.createMultiple(50, 'logo');
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
     
@@ -82,4 +82,5 @@ function render() {
     game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.total, 32, 32);
     game.debug.spriteInfo(sprite, 32, 450);
 
+}
 }
