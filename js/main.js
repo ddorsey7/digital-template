@@ -18,7 +18,7 @@ window.onload = function() {
     function preload() {
 
         game.load.image('logo', 'assets/phaser.png');
-    // game.load.image('bullet', 'assets/phaser.png');
+        game.load.image('bullet', 'assets/rocket.png');
     
     }
 
@@ -42,7 +42,7 @@ window.onload = function() {
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
     
-    sprite = game.add.sprite(400, 300, 'logo');
+    sprite = game.add.sprite(400, 300, 'rocket');
     sprite.anchor.set(0.5);
 
     game.physics.enable(sprite, Phaser.Physics.ARCADE);
