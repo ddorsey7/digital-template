@@ -17,14 +17,14 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/rocket.png' );
+        game.load.image( 'rock', 'assets/rocket.png' );
     }
     
     var bouncy;
     
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
+        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'rock' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
