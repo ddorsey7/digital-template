@@ -13,40 +13,73 @@ window.onload = function() {
     
     "use strict";
     
-    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
+    var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+
+function preload() {
+
+    game.load.image('arrow', 'assets/sprites/arrow.png');
+    game.load.image('bullet', 'assets/sprites/purple_ball.png');
     
-    function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+}
+
+var sprite;
+var bullets;
+
+var fireRate = 100;
+var nextFire = 0;
+
+function create() {
+
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+
+    game.stage.backgroundColor = '#313131';
+
+    bullets = game.add.group();
+    bullets.enableBody = true;
+    bullets.physicsBodyType = Phaser.Physics.ARCADE;
+
+    bullets.createMultiple(50, 'bullet');
+    bullets.setAll('checkWorldBounds', true);
+    bullets.setAll('outOfBoundsKill', true);
+    
+    sprite = game.add.sprite(400, 300, 'arrow');
+    sprite.anchor.set(0.5);
+
+    game.physics.enable(sprite, Phaser.Physics.ARCADE);
+
+    sprite.body.allowRotation = false;
+
+}
+
+function update() {
+
+    sprite.rotation = game.physics.arcade.angleToPointer(sprite);
+
+    if (game.input.activePointer.isDown)
+    {
+        fire();
     }
-    
-    var bouncy;
-    
-    function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
-        
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something cool.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+
+}
+
+function fire() {
+
+    if (game.time.now > nextFire && bullets.countDead() > 0)
+    {
+        nextFire = game.time.now + fireRate;
+
+        var bullet = bullets.getFirstDead();
+
+        bullet.reset(sprite.x - 8, sprite.y - 8);
+
+        game.physics.arcade.moveToPointer(bullet, 300);
     }
-    
-    function update() {
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
-    }
-};
+
+}
+
+function render() {
+
+    game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.total, 32, 32);
+    game.debug.spriteInfo(sprite, 32, 450);
+
+}
