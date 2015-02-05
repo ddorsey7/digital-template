@@ -77,8 +77,8 @@ function fire() {
 
 }
 
-/*function render() {
+function render() {
     game.debug.text('Active Bullets: ' + bullets.countLiving() + ' / ' + bullets.total, 32, 32);
     game.debug.spriteInfo(sprite, 32, 450);
-}*/
+}
 }
