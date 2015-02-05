@@ -1,4 +1,4 @@
-window.onload = function() {
+//window.onload = function() {
     // You might want to start with a template that uses GameStates:
     //     https://github.com/photonstorm/phaser/tree/master/resources/Project%20Templates/Basic
     
@@ -89,4 +89,4 @@ function render () {
     game.debug.spriteInfo(ball, 32, 32);
 
 }
-}
+//}
