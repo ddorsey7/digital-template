@@ -55,6 +55,7 @@ window.onload = function() {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         //bouncy.rotation = game.physics.arcade.angleToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
+        game.physics.arcade.collide(knocker, ball);
         if (game.input.activePointer.isDown)
         {
             game.physics.arcade.moveToPointer(bouncy, 300);
