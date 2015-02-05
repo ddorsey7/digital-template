@@ -17,7 +17,7 @@ window.onload = function() {
     
     function preload() {
         // Load an image and call it 'logo'.
-        game.load.image( 'rock', 'assets/phaser.png' );
+        game.load.image( 'rock', 'assets/bullet.png' );
         //game.load.image( 'dude', 'assets/rocket.png' );
     }
     
