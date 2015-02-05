@@ -25,6 +25,8 @@ window.onload = function() {
     
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+        cursors = game.input.keyboard.createCursorKeys();
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'rock' );
         //knocker = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
         // Anchor the sprite at its center, as opposed to its top-left corner.
@@ -56,9 +58,30 @@ window.onload = function() {
         // new trajectory.
         //bouncy.rotation = game.physics.arcade.angleToPointer( bouncy, this.game.input.activePointer, 500, 500, 500 );
         //game.physics.arcade.collide(knocker, ball);
-        if (game.input.activePointer.isDown)
+        /*if (game.input.activePointer.isDown)
         {
             game.physics.arcade.moveToPointer(bouncy, 300);
-        }
+        }*/
+        if (cursors.up.isDown)
+    {
+        bouncy.body.acceleration.y = -600;
+    }
+    else if (cursors.down.isDown)
+    {
+        bouncy.body.acceleration.y = 600;
+
+    }
+    else if (cursors.left.isDown)
+    {
+        bouncy.body.acceleration.x = -500;
+    }
+    else if (cursors.right.isDown)
+    {
+        bouncy.body.acceleration.x = 500;
+    }
+    else
+    {
+        bouncy.body.acceleration.setTo(0,0);
+    }
     }
 };
