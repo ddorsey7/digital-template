@@ -19,11 +19,12 @@ window.onload = function() {
 
         game.load.image('bullet', 'assets/bullet.png');
         game.load.image('rock', 'assets/rocket.png');
-    
+        game.load.image('invader', 'assets/phaser.png');
     }
 
     var sprite;
     var bullets;
+    var aliens;
 
     var fireRate = 100;
     var nextFire = 0;
@@ -39,28 +40,51 @@ window.onload = function() {
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
 
         bullets.createMultiple(50, 'bullet');
-    bullets.setAll('checkWorldBounds', true);
-    bullets.setAll('outOfBoundsKill', true);
+        bullets.setAll('checkWorldBounds', true);
+        bullets.setAll('outOfBoundsKill', true);
     
-    sprite = game.add.sprite(400, 300, 'rocket');
-    sprite.anchor.set(0.5);
+        sprite = game.add.sprite(400, 300, 'rocket');
+        sprite.anchor.set(0.5);
 
-    game.physics.enable(sprite, Phaser.Physics.ARCADE);
+        game.physics.enable(sprite, Phaser.Physics.ARCADE);
 
-    sprite.body.allowRotation = false;
+        sprite.body.allowRotation = false;
+        
+        //  The baddies!
+        aliens = game.add.group();
+        aliens.enableBody = true;
+        aliens.physicsBodyType = Phaser.Physics.ARCADE;
 
-}
-
-function update() {
-
-    sprite.rotation = game.physics.arcade.angleToPointer(sprite);
-
-    if (game.input.activePointer.isDown)
-    {
-        fire();
+        createAliens();
     }
+    function createAliens () {
 
-}
+        var alien = aliens.create(300, 200, 'invader');
+        alien.anchor.set(0.5);
+    }
+    function collisionHandler (bullet, alien) {
+
+        //  When a bullet hits an alien we kill them both
+        bullets.kill();
+        alien.kill();
+
+        if (aliens.countLiving() == 0)
+        {
+            stateText.text = " You Won";
+            stateText.visible = true;
+        }
+
+    }
+    function update() {
+
+        sprite.rotation = game.physics.arcade.angleToPointer(sprite);
+
+        if (game.input.activePointer.isDown)
+        {
+            fire();
+        }
+    
+    }
 
 function fire() {
 
