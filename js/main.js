@@ -25,7 +25,7 @@ window.onload = function() {
     
     function create() {
         // Create a sprite at the center of the screen using the 'logo' image.
-        game.physics.startSystem(Phaser.Physics.ARCADE);
+        //game.physics.startSystem(Phaser.Physics.ARCADE);
         cursors = game.input.keyboard.createCursorKeys();
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'rock' );
         //knocker = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
