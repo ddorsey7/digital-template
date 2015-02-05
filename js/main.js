@@ -13,7 +13,7 @@ window.onload = function() {
     
     "use strict";
     
-    var game = new Phaser.Game( 1600, 1200, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
+    var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
         // Load an image and call it 'logo'.
