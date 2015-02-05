@@ -31,9 +31,14 @@ window.onload = function() {
         
         // Turn on the arcade physics engine for this sprite.
         game.physics.enable( bouncy, Phaser.Physics.ARCADE );
+        
+        //get moving
+        bouncy.body.velocity.setTo(200, 200);
         // Make it bounce off of the world bounds.
         bouncy.body.collideWorldBounds = true;
-        
+        //  This sets the image bounce energy for the horizontal 
+        //  and vertical vectors (as an x,y point). "1" is 100% energy return
+        bouncy.body.bounce.setTo(1, 1);
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
