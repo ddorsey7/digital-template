@@ -32,7 +32,7 @@ window.onload = function() {
         bouncy.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
+        game.physics.enable( [knocker, bouncy], Phaser.Physics.ARCADE );
         
         //get moving
         bouncy.body.velocity.setTo(200, 200);
@@ -44,7 +44,7 @@ window.onload = function() {
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something cool.", style );
+        var text = game.add.text( game.world.centerX, 15, "Build something Cool.", style );
         text.anchor.setTo( 0.5, 0.0 );
     }
     
