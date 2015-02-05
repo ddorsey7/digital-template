@@ -32,7 +32,7 @@ window.onload = function() {
         bouncy.anchor.setTo( 0.5, 0.5 );
         
         // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
+        game.physics.enable( [knocker,bouncy], Phaser.Physics.ARCADE );
         
         //get moving
         bouncy.body.velocity.setTo(200, 200);
