@@ -17,8 +17,8 @@ window.onload = function() {
 
 function preload() {
 
-    game.load.image('dude', 'assets/sprites/phaser.png');
-    game.load.image('ball', 'assets/sprites/rocket.png');
+    game.load.image('dude', 'assets/phaser.png');
+    game.load.image('ball', 'assets/rocket.png');
     
 }
 
