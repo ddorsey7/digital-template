@@ -18,16 +18,15 @@ window.onload = function() {
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'rock', 'assets/phaser.png' );
+        //game.load.image( 'dude', 'assets/rocket.png' );
     }
     
     var bouncy;
     
     function create() {
-        game.physics.startSystem(Phaser.Physics.ARCADE);
-
-        cursors = game.input.keyboard.createCursorKeys();
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'rock' );
+        //knocker = game.add.sprite(game.world.centerX, game.world.centerY, 'dude');
         // Anchor the sprite at its center, as opposed to its top-left corner.
         // so it will be truly centered.
         bouncy.anchor.setTo( 0.5, 0.5 );
@@ -45,7 +44,7 @@ window.onload = function() {
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
         var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something Cool.", style );
+        var text = game.add.text( game.world.centerX, 15, "Build something cool.", style );
         text.anchor.setTo( 0.5, 0.0 );
     }
     
