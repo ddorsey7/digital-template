@@ -17,8 +17,8 @@ window.onload = function() {
 
 function preload() {
 
-    game.load.image('arrow', 'assets/sprites/arrow.png');
-    game.load.image('bullet', 'assets/sprites/purple_ball.png');
+    game.load.image('arrow', 'assets/phaser.png');
+    game.load.image('bullet', 'assets/phaser.png');
     
 }
 
